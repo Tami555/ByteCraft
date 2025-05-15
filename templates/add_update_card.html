@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteCraft - computer store</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/add_update_card.css')}}">
+    <style>
+        @font-face {
+            font-family: 'AKONY';
+            src: url("{{url_for('static', filename='fonts/AKONY.woff2')}}");
+        }
+        @font-face {
+            font-family: 'Angry';
+            src: url("{{url_for('static', filename='fonts/Angry.woff2')}}");
+        }
+
+        /* Десктоп hover-эффекты */
+    @media (min-width: 769px) {
+        .btn_safe_card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 10px #B7FFAF;
+        }
+    }
+    
+    /* Мобильный tap-эффект */
+    @media (max-width: 768px) {
+        .btn_safe_card:active {
+            transform: scale(0.98);
+            background-color: #2d523f;
+        }
+    }
+    </style>
+</head>
+<body>
+    {% set have = (card.CardNumber == 0) %}
+    <div class="head">
+        <a href="/shop/user_card"><img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/arrow-left-circle-512.png"></a>
+        <h1>
+            {% if have %}
+            Добавить
+            {% else %}
+            Изменить
+            {% endif %}
+            Карту
+        </h1>
+    </div>
+    <div class="card_block">
+        <div class="simple-line">Информация о карте</div>
+        <form action="" method="post">
+
+            <div class="iput_block">
+                <label for="number">Номер карты: </label>
+                <div class="card-number-inputs">
+                    {% if have %}
+                        <input type="text" class="card-number" maxlength="4">
+                        <input type="text" class="card-number" maxlength="4">
+                        <input type="text" class="card-number" maxlength="4">
+                        <input type="text" class="card-number" maxlength="4">
+                    {% else %}
+                       {% set number_parts = card.CardNumber|string|batch(4) %}
+                        {% for part in number_parts %}
+                            <input type="text" class="card-number" maxlength="4" value="{{ ''.join(part) }}">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <p class="error" id="err_number"></p>
+            </div>
+            <br><br>
+
+            <div style="display: flex; gap: 50px;">
+                <div class="iput_block">
+                    <label for="period">Срок действия: </label>
+                    <div class="period-inputs">
+                       {% if have %}
+                        <input type="text" class="period-month" maxlength="2" placeholder="ММ">
+                        <span>/</span>
+                        <input type="text" class="period-year" maxlength="2" placeholder="ГГ">
+                        {% else %}
+                            {% set period_parts = card.Period.split('/') %}
+                             <input type="text" class="period-month" maxlength="2" value="{{ period_parts[0] }}">
+                            <span>/</span>
+                            <input type="text" class="period-year" maxlength="2" value="{{ period_parts[1] }}">
+                        {% endif %}
+                    </div>
+                    <p class="error" id="err_period"></p>
+                </div>
+                <div class="iput_block">
+                    <label for="code">CVV/CVC КОД: </label>
+                    <input type="text" name="code" id="code" maxlength="3" {% if not have %}value="{{card.Code}}"{% endif %}>
+                    <p class="error" id="err_code"></p>
+                </div>
+            </div>
+
+            <div class="block_btn">
+                <img src="https://cdn0.iconfinder.com/data/icons/flat-design-business-set-3/24/payment-method-visa-256.png">
+                <div class="btn_safe_card">Сохранить</div>
+            </div>
+        </form>
+    </div>
+<script src="{{url_for('static', filename='js/add_update_card.js')}}"></script>
+</body>
+</html>

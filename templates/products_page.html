@@ -1,0 +1,46 @@
+{% extends "menu_basic.html" %}
+{% block dop_style %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/products_page.css')}}">
+{% endblock %}
+
+{% block find %}
+<div class="finder">
+    <input type="text" class="find_input" id="searchInput" value="{{ search_query }}">
+   <img src="{{url_for('static', filename='img/find.png')}}" class="btn_find">
+</div>
+{% endblock %}
+
+{% block content %}
+
+    {% if products|length > 0 %}
+    {% for p in products%}
+        <div class="one_product" style= 'background: linear-gradient(#2A2A2A, {{p.category.Background}})'>
+            <img class="like" data-product-id="{{p.Id}}" src="{%if p.Id in favorites%}{{url_for('static', filename='img/like.png')}}{% else %}{{url_for('static', filename='img/no_like.png')}}{%endif%}">
+            <img class="pr_img" src={{p.Image}}>
+            <div class="name">{{p.Title}}</div>
+            <div class="mark_block">
+                <img src="{{url_for('static', filename='img/great_star.png')}}">
+                <p class="mark">
+                    {% if p.reviews %}
+                        {{ ((p.reviews|sum(attribute='Mark') / p.reviews|length)|round(2)) }}
+                    {% else %}
+                        нет
+                    {% endif %}
+                </p>
+            </div>
+            <p style="color: {{p.category.Color}}">{{p.Cost}} рублей</p>
+            <img class="dop_infa_product" data-product-id="{{p.Id}}" src="https://cdn2.iconfinder.com/data/icons/arrow-part-2-2/32/Arrow_03_arrow-down-triangle-essential-down_icon-256.png">
+        </div>
+    {% endfor%}
+    <div class="main_one_product">
+    </div>
+
+    {% else %}
+    <div class="block_not_found">
+        <h2 >Ничего не найдено :(</h2>
+        <img src="{{url_for('static', filename='img/not_found_brain.PNG')}}">
+    </div>
+    {% endif %}
+
+    <script src="{{url_for('static', filename='js/shop_main.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,128 @@
+.find_adress{
+    display: flex;
+    gap: 0px;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+    margin-bottom: 50px;
+}
+
+input{
+    align-self: center;
+    width: 350px;
+    height: 40px;
+    background-color: #D9D9D9;
+}
+
+input.form-control:focus {
+    outline: none;
+    background-color: #D0E8D6;
+    border: 2px solid rgb(6, 185, 6);
+}
+.btn_found{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #abb8ae;
+    border-radius: 0px 5px 5px 0px;
+    width: 50px;
+    height: 44px;
+    border: none;
+    cursor: pointer;
+}
+.btn_found img{
+    width: 30px;
+    height: 30px;
+}
+.map_img{
+    width: 600px;
+    height: 450px;
+}
+#сourier_adress_check{
+    margin-top: 5px;
+}
+
+.btn_found.highlight {
+    background-color: #B7FFAF;
+    box-shadow: 0 0 10px #B7FFAF;
+    transition: all 0.3s ease;
+}
+
+/* Анимация прыгания */
+.btn_found.jump {
+    animation: jump 0.5s ease infinite alternate;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Мобильная версия (до 768px) */
+@media (max-width: 768px) {
+    body h1{
+        font-size: 25px;
+    }
+    .find_adress {
+        margin: 15px 0;
+        padding: 0 15px;
+    }
+
+    input[type="text"] {
+        height: 40px;
+        font-size: 14px;
+        max-width: 280px;
+    }
+
+    .btn_found {
+        width: 45px;
+        height: 40px;
+    }
+
+    .btn_found img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .map_img {
+        max-height: 350px;
+    }
+
+    .btn_check_address {
+        height: 45px;
+        font-size: 15px;
+        max-width: 180px;
+    }
+}
+
+/* Для очень маленьких экранов (до 480px) */
+@media (max-width: 480px) {
+    input[type="text"] {
+        height: 38px;
+        font-size: 13px;
+        max-width: 250px;
+    }
+
+    .btn_found {
+        width: 40px;
+        height: 38px;
+    }
+
+    .map_img {
+        max-height: 300px;
+    }
+
+    .btn_check_address {
+        height: 42px;
+        font-size: 14px;
+        max-width: 160px;
+    }
+
+    .error {
+        font-size: 13px;
+    }
+}

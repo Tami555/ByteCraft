@@ -1,0 +1,363 @@
+#main_p{
+    /* background-color: #0a6a3c; */
+    background-color: #0E9956;
+    border-radius: 10px;
+}
+.content {
+    background-color: #333333;
+    min-width: 90%;
+    min-height: 400px;
+    display: flex;
+    gap: 10px;
+    overflow-wrap: anywhere;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;            
+    box-sizing: border-box;   
+}
+
+.one_product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 350px;
+    height: 350px;
+    color: white;
+    position: relative;
+    padding: 10px; 
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+}
+
+.one_product:hover{
+    transform: scale(1.1); 
+    box-shadow: 5px 14px 25px rgba(239, 239, 239, 0.619);
+    z-index: 1000;
+}
+.name {
+    display: block;
+    text-align: center;
+    min-height: 40px;
+    text-wrap: wrap;
+    width: 300px;
+    font-family: "AKONY";
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+}
+
+.like {
+    width: 40px;
+    height: 40px;
+    position: absolute; 
+    top: 10px;         
+    right: 10px;
+    cursor: pointer;  
+}
+.mark_block{
+    display: flex;
+    flex-direction: row;
+    background-color: #cac8c888;
+    border-radius: 5px;
+    width: 85px;
+    height: 30px;
+    padding: 3px;
+    color: black;
+    font-family: 'AKONY';
+    /* justify-content: space-between; */
+    justify-content: space-evenly;
+    align-items: center;
+    /* position: relative;
+    right: 120px;
+    top: 10px; */
+    font-size: 11px;
+}
+.mark_block img{
+    width: 25px;
+    height: 25px;
+}
+.pr_img {
+    width: 200px;
+    height: 150px;
+    object-fit: contain; 
+}
+
+p {
+    font-family: "AKONY";
+    margin: 0;
+    /* color: #FF8686; */
+}
+
+.dop_infa_product, .close {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+
+/* Отдельный товар (полная инфа) */
+
+.main_one_product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 500px;
+    height: 680px;
+    position: fixed;
+    top: 20px;
+    box-shadow: 14px 14px 50px rgba(173, 171, 171, 0.619);
+    padding: 20px;
+    z-index: 2100;
+    transition: opacity 5s ease-in-out;
+    border-radius: 10px;
+    display: none;
+    
+}
+
+.main_one_product.show {
+    display: flex;
+    opacity: 1;
+}
+
+.main_one_product div{
+    align-self: start;
+    gap: 5px;
+}
+
+.img_one_product{
+    width: 300px;
+    height: 200px;
+    
+}
+.simple{
+    font-size: 13px;
+    font-family: 'Angry';
+    font-weight: 600;
+}
+
+.zagol_1{
+    color: white;
+    font-size: 14px;
+    font-family: "AKONY";
+}
+
+.zagol_2{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Angry';
+}
+
+
+.btns_basket{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%;
+    gap: 10px;
+    align-content: center;
+}
+
+.put_in_basket, .put_in_basket_already{
+    align-self: center;
+    cursor: pointer;
+    color: rgb(229, 224, 224);
+    font-family: 'Angry';
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    font-size: 17px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+.put_in_basket{
+    width: 270px;
+    /* height: 50px; */
+    text-shadow: #2A2A2A 1px 0 10px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+.put_in_basket_already {
+    background-color: #2A2A2A;
+    width: 150px;
+    height: 50px;
+    box-shadow: 2px 2px 15px rgba(255, 254, 254, 0.388);
+}
+
+.put_in_basket:hover, .put_in_basket_already:hover{
+    transform: scale(1.1); 
+    box-shadow: 2px 5px 15px rgba(239, 239, 239, 0.51);
+}
+
+.put_in_basket:active {
+    background-color: #30472a;
+    transform: translateY(1px); 
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.counter{
+    display: flex;
+    gap: 0;
+}
+
+.plus, .minus, .value{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 800;
+    text-shadow: white 1px 0 10px;
+    background-color: #2A2A2A;
+    border-radius: 10px;
+    font-family: 'Angry';
+    transition: all 0.3s ease;
+}
+
+.plus{
+    color: #0E9956;
+    cursor: pointer;
+}
+
+.plus:hover{
+    transform: scale(1.1); 
+    box-shadow: 3px 5px 13px #0e9956ad;
+}
+
+.minus{
+    cursor: pointer;
+    color: rgb(181, 3, 3);
+}
+
+.minus:hover{
+    transform: scale(1.1); 
+    box-shadow: 3px 5px 13px rgba(181, 3, 3, 0.666);
+}
+
+
+.value{
+    color: white;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.574);
+    z-index: 999;
+    display: none;
+    transition: opacity 5s;
+}
+
+.overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* НЕ найдено 404 */
+.block_not_found{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    font-family: "AKONY";
+    justify-content: center;
+    align-items: center;
+}
+
+.block_not_found img{
+    width: 300px;
+    height: 250px;
+}
+
+
+/* Мобильная версия - products_page.css */
+@media (max-width: 768px) {
+    .content {
+        padding: 10px;
+        gap: 15px;
+    }
+    
+    .one_product {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .one_product:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .name {
+        width: 100%;
+        font-size: 14px;
+    }
+    
+    .pr_img {
+        width: 150px;
+        height: 120px;
+    }
+    
+    .main_one_product {
+        width: 95%;
+        height: auto;
+        padding: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .img_one_product {
+        width: 200px;
+        height: 150px;
+    }
+    
+    .btns_basket {
+        flex-direction: column;
+    }
+    
+    .put_in_basket, .put_in_basket_already {
+        width: 100%;
+    }
+    
+    .block_not_found img {
+        width: 150px;
+        height: 120px;
+    }
+    .block_not_found h2{
+        font-size: 14px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .one_product {
+        gap: 10px;
+    }
+    
+    .pr_img {
+        width: 120px;
+        height: 100px;
+    }
+    
+    .like, .dop_infa_product {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .main_one_product {
+        padding: 10px;
+    }
+    
+    .zagol_2 {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/basic_way.css')}}">
+    <title>ByteCraft computer store Pick-Up Points</title>
+    {% block dop_style %}{% endblock %}
+    <style>
+        @font-face {
+            font-family: 'AKONY';
+            src: url("{{url_for('static', filename='fonts/AKONY.woff2')}}");
+        }
+        @font-face {
+            font-family: 'Angry';
+            src: url("{{url_for('static', filename='fonts/Angry.woff2')}}");
+        }
+    </style>
+</head>
+<body>
+    <h1> {{title}}</h1>
+    {% block wayblock %}
+
+    {% endblock %}
+</body>
+</html>

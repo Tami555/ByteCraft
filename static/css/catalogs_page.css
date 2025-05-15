@@ -1,0 +1,142 @@
+#catalog_p{
+    /* background-color: #0a6a3c; */
+    background-color: #0E9956;
+    border-radius: 10px;
+}
+#main_p{
+    background-color: none;
+    border-radius: none;
+}
+
+.content {
+    background-color: #333333;
+    min-width: 90%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;            
+    box-sizing: border-box;   
+}
+
+.category{
+    width: 80%;
+    height: 150px;
+    color: white;
+    font-family: "AKONY";
+    background-color: #656565;
+    font-size: 15px;
+    text-shadow: #2A2A2A 3px 0 10px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+
+.category div{
+    margin-top: 10px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+h1{
+    margin-left: 30px;
+    flex-grow: 1; 
+}
+.obolocha{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0E9956;
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    margin-right: 30px;
+}
+.category img{
+    width: 80px;
+    height: 70px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .content {
+        padding: 20px 10px;
+        gap: 20px;
+        min-height: auto;
+    }
+    
+    .category {
+        width: 95%;
+        height: auto;
+        min-height: 120px;
+        padding: 15px 0;
+    }
+    
+    .category div {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+        margin-top: 0;
+        border-radius: 5px;
+    }
+    
+    .category h1 {
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 18px;
+        text-align: center;
+        width: calc(100% - 40px);
+    }
+    
+    .obolocha {
+        margin: 0 auto;
+        width: 80px;
+        height: 80px;
+        order: -1; 
+    }
+    
+    .category:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .category:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+}
+
+@media (max-width: 480px) {
+    .category {
+        width: 100%;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .category h1 {
+        font-size: 16px;
+    }
+    
+    .obolocha {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .category img {
+        width: 50px;
+        height: 50px;
+    }
+}

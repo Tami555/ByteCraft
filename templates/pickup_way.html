@@ -1,0 +1,27 @@
+{% extends "basic_way.html" %}
+
+{% block dop_style %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/pickup_way.css')}}">
+{% endblock %}
+
+
+{% block wayblock %}
+
+<div class="check_cites">
+    <p class="title">Выберете город</p>
+    <select id="cites" name="cites" class="styled-select">
+        {% for c in cites %}
+            <option value="{{c.Id}}" {% if selected_city and c.Id == selected_city.Id %}selected{% endif %}>{{c.Title}}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="cites_pick_up">
+</div>
+
+<p class="error"></p>
+
+<button class="btn_check_address" id="pickup_adress_check"> Выбрать </button>
+
+<script src="{{url_for('static', filename='js/pickup_way.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteCraft - computer store</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/place_order.css')}}">
+    <style>
+        @font-face {
+            font-family: 'AKONY';
+            src: url("{{url_for('static', filename='fonts/AKONY.woff2')}}");
+        }
+        @font-face {
+            font-family: 'Angry';
+            src: url("{{url_for('static', filename='fonts/Angry.woff2')}}");
+        }
+    </style>
+</head>
+<body>
+    <div class="head_block">
+        <a href="/shop/basket"><img class="enter_basket" src="{{url_for('static', filename='img/basket.PNG')}}" title="Вернуться в корзину"></a>
+        <h1 class="title">Оформление заказа</h1>
+        <div class="point"id="logo_p">
+            <img src="https://cdn-icons-png.flaticon.com/512/2586/2586602.png">
+            <p>ByteCraft</p>
+        </div>
+    </div>
+    
+    <div class="oformlen_block">
+
+        <div class="block_products">
+            {%for p in products%}
+                <div class="one_product">
+                    <div class="main_product_infa">
+                        <img src="{{p.Image}}">
+                        <p class="title_product">{{p.Title}}</p>
+                        <p class="price_product">{{p.Cost}} рублей</p>
+                    </div>
+                    <p class="quentity">х{{p.Quantity}}</p>
+                </div>
+            {%endfor%}
+        </div>
+
+        <h1 class="way_get_title">СПОСОБ ПОЛУЧЕНИЯ: </h1>
+        <div class="way_get_block">
+            <div class="input_way">
+                <input type="radio" id="pickup" name="way" value="pickup" {% if pickup_selected %}checked{% endif %}/>
+                <label for="pickup">Самовывоз</label>
+            </div>
+            
+            <div class="input_way">
+                <label for="courier">Курьер</label>
+                <input type="radio" id="courier" name="way" value="courier" {% if courier_selected %}checked{% endif %}/>
+            </div>
+        </div>
+        <p class="no_check_error"></p>
+
+        <div class="request_rsponse"> 
+            <p class="request">Адрес доставки: </p>
+            <p class="response" id="adress_id">{{address}}</p>
+        </div>
+
+        <div class="request_rsponse"> 
+            <p class="request">ФИО: </p>
+            <p class="response">{{current_user.LastName}} {{current_user.FirstName}} {{current_user.Patronymic}}</p>
+        </div>
+
+        <div class="request_rsponse"> 
+            <p class="request">Номер Телефона: </p>
+            <p class="response">{{current_user.PhoneNumber}}</p>
+        </div>
+
+        <div class="request_rsponse"> 
+            <p class="request">Доставка: </p>
+            <p class="response" id="delivery_id">{{delivery_cost}}</p>
+        </div>
+
+        <div class="request_rsponse"> 
+            <p class="request" id="summa_title">Итог: </p>
+            <p class="response" id="summa_all">{{summa}} рублей</p>
+        </div>
+
+        <div class="buy_products_finish">
+            Купить
+        </div>
+
+    </div>
+
+    <div class="message_finish_block">
+        <img class="img_answer" src="https://cdn0.iconfinder.com/data/icons/round-ui-icons/512/tick_green.png">
+        <h2 class="status">УСПЕШНО</h2>
+        <p class="message">Спасибо за заказ !!!</p>
+        <button class="btn_further">Продолжить покупки</button>
+    </div>
+    <div class="modal-overlay"></div>
+    <script src="{{url_for('static', filename='js/place_order.js')}}"></script>
+</body>
+</html>

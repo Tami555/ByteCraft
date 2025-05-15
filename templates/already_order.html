@@ -1,0 +1,54 @@
+{% extends "menu_basic.html" %}
+{% block dop_style %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/already_order.css')}}">
+
+{% endblock %}
+
+{% block content %}
+    {%if orders|length > 0%}
+
+    {% for order in orders%}
+    <div class="order_main_block">
+        <div class="block_order">
+            <p class="data_order">заказ от: {{order.Data}}</p>
+            <p class="code_order">Код заказа: #{{order.Id}}</p>
+            <div class="status_block">
+                <p class="status">Статус: </p>
+                    {%if order.Already%}
+                    <p class="status_yes"> получен {{order.DateReceipt[0]}} числа, в {{order.DateReceipt[1]}}</p>
+                    {%else%}
+                    <p class="status_no"> в пути, прибудет {{order.DateReceipt[0]}} числа, в {{order.DateReceipt[1]}}</p>
+                    {%endif%}
+                </p>
+            </div>
+
+            <div class="block_products">
+                {% for product in order.Products%}
+                {%set p = product['product']%}
+                <div class="one_product">
+                    <div class="main_product_infa">
+                        <img src="{{p.Image}}">
+                        <p class="title_product">{{p.Title}}</p>
+                    </div>
+                    <p class="quentity">х{{product['quantity']}}</p>
+                </div>
+                {%endfor%}
+            </div>
+            {%if order.Already%}
+            <a href="/create_review/{{order.Id}}"><div class="create_feedback">
+                Оставить отзыв
+            </div></a>
+        {%endif%}
+        </div>
+    </div>
+    {%endfor%}
+    
+    {% else %}
+        <div class="empty">
+            <h1>Здесь пусто!</h1>
+            <h1>Скорее закажите что-нибудь !!!</h1>
+            <img src="{{url_for('static', filename='img/shopping.png')}}">
+        </div>
+    {% endif %}
+
+{% endblock %}

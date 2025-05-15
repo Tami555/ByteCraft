@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/add_review.css')}}">
+    <title>ByteCraft - computer store</title>
+    <style>
+        @font-face {
+            font-family: 'AKONY';
+            src: url("{{url_for('static', filename='fonts/AKONY.woff2')}}");
+        }
+        @font-face {
+            font-family: 'Angry';
+            src: url("{{url_for('static', filename='fonts/Angry.woff2')}}");
+        }
+    </style>
+</head>
+<body>
+    <h1>ОСТАВИТЬ ОТЗЫВ</h1>
+
+    <div class="check_product">
+        <div class="product_block">
+            <img id="product-image" src=''>
+            <div class="titles_block">
+                <h1 id="product-title" class="main_title">Товар</h1>
+                <p id="product-price" class="price">цена руб</p>
+            </div>
+        </div>
+        
+        {% if products|length > 1 %}
+        <div class="select-wrapper">
+            <select id="products" name="products" class="styled-select">
+                {% for p in products %}
+                    <option value="{{p.Id}}">{{p.Title}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endif %}
+    </div>
+    <div class="review_blocks">
+        <div class="marK_block">
+            <h2>ОЦЕНИТЕ ПРОДУКТ</h2>
+            <div class="stars">
+                <img src="{{url_for('static', filename='img/empty_star.png')}}" value="1" class="star" data-value="1">
+                <img src="{{url_for('static', filename='img/empty_star.png')}}" value="2" class="star" data-value="2">
+                <img src="{{url_for('static', filename='img/empty_star.png')}}" value="3" class="star" data-value="3">
+                <img src="{{url_for('static', filename='img/empty_star.png')}}" value="4" class="star" data-value="4">
+                <img src="{{url_for('static', filename='img/empty_star.png')}}" value="5" class="star" data-value="5">
+            </div>
+            <p class="rating-text">Ваша оценка: <span id="rating-value">0</span>/5</p>
+        </div>
+    
+        <div class="comment_block">
+            <h2>НАПИСАТЬ КОММЕНТАРИЙ:</h2>
+            <textarea class="comment" placeholder="Ваш отзыв..." maxlength="500"></textarea>
+            <p class="error"></p>
+            <p class="char-counter"><span id="char-count">0</span>/500 символов</p>
+        </div>
+    </div>
+    <p class="comment_error"></p>
+    <div class="add_review_btn">
+        Опубликовать
+    </div>
+
+    <!-- передача данных в JS -->
+    <script id="products-data" type="application/json">
+        {
+            "count": {{ products|length }},
+            {% if products|length == 1 %}
+            "singleProductId": {{ products[0].Id }}
+            {% else %}
+            "singleProductId": null
+            {% endif %}
+        }
+        </script>
+    <script src="{{url_for('static', filename='js/add_review.js')}}"></script>
+</body>
+</html>

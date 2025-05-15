@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteCraft - computer store</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/menu_basic.css')}}">
+    <style>
+        @font-face {
+            font-family: 'AKONY';
+            src: url("{{url_for('static', filename='fonts/AKONY.woff2')}}");
+        }
+        @font-face {
+            font-family: 'Angry';
+            src: url("{{url_for('static', filename='fonts/Angry.woff2')}}");
+        }
+    </style>
+    {% block dop_style %}{% endblock %}
+</head>
+<body>
+    <div class="menu">
+        <!-- <img src="" class="logo"> -->
+        <div class="point" id="logo_p">
+            <img src="https://cdn-icons-png.flaticon.com/512/2586/2586602.png">
+            <p>ByteCraft</p>
+        </div>
+
+        <a href="/shop/main_page">
+            <div class="point" id="main_p">
+                <img src="{{url_for('static', filename='img/main_page.PNG')}}">
+                <p>Главная</p>
+            </div>
+        </a>
+        <a href="/shop/catalog/show/all">
+            <div class="point" id="catalog_p">
+                <img src="{{url_for('static', filename='img/categories.PNG')}}">
+                <p>Каталог</p>
+            </div>
+        </a>
+
+        <a href="/shop/basket">
+            <div class="point" id="basket_p">
+                <img src="{{url_for('static', filename='img/basket.PNG')}}">
+                <p>Корзина</p>
+            </div>
+        </a>
+
+        <div class="point" id="you_p">
+            <img src="{{url_for('static', filename='img/user_account.PNG')}}">
+            <p>Вы</p>
+        </div>
+        <!-- Выпадающее меню -->
+        <div class="dropdown" id="dropdownMenu">
+            <a href="/user_account" class="dropdown-item">Аккаунт</a>
+            <a href="/favorites" class="dropdown-item">Избранные</a>
+            <a href="/user_orders" class="dropdown-item">Мои Покупки</a>
+            <a href="/shop/user_card" class="dropdown-item">Мои карты</a>
+        </div>
+    </div>
+    </div>
+    
+    {% block find %}{% endblock %}
+    <h1 class="main_title">{{title}}</h1>
+
+    <main role="main" class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+<script src="{{url_for('static', filename='js/menu.js')}}"></script>
+</body>
+</html>

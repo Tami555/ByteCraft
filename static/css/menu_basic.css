@@ -1,0 +1,317 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: #0F0F0F;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    /* Нельзя копировать */
+    -ms-user-select: none; 
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	user-select: none; 
+}
+.menu{
+    width: 100%;
+    background-color: #396a53;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* position: sticky;
+    top: 0px;
+    left: 0px;
+    z-index: 500; */
+}
+
+.point{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    margin: 0, 10px;
+    margin-right: 50px;  
+    padding: 20px;
+    cursor: pointer;
+    width: 150px;
+}
+
+.point p{
+    font-family: "AKONY";
+    font-weight: 700;
+    color: #B7FFAF;
+}
+
+.point img, #logo_p img{
+    width: 48px;
+    height: 48px;
+}
+
+#logo_p p{
+    color: black;
+    font-family: 'Angry';
+    font-size: 20px;
+}
+
+#logo_p{
+    margin-left: 20px;
+    margin-right: -60px;
+}
+
+.logo{
+    width: 70px;
+    height: 80px;
+    margin-left: 20px;
+    margin-right: -70px;
+}
+
+#main_p img, #catalog_p img, #basket_p img, #you_p img{
+    width: 55px;
+    height: 55px;
+}
+.main_title{
+    font-family: 'Angry';
+    color: white;
+    align-self: start;
+    margin-left: 30px;
+}
+a{
+    text-decoration: none;
+}
+/* Выподающее меню */
+
+#you_p{
+    width: 230px;
+    margin-right: 5px;
+    padding-left: 0px;
+}
+.dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #396a53;
+    border-radius: 10px;
+    display: none; 
+    flex-direction: column;
+    width: 250px; 
+    z-index: 1; 
+}
+
+.dropdown-item {
+    display: block;
+    padding: 17px 20px;
+    text-decoration: none;
+    color: #98FFCD;
+    font-family: "AKONY";
+    background-color: #0E9956;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-size: 15px;
+}
+
+.dropdown-item:hover {
+    background-color: #096637; 
+}
+
+
+/* Поиск */
+.finder {
+    display: flex;
+    width: 800px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #474545;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border: 1px solid transparent; 
+}
+
+.finder:hover {
+    border-color: #ccc; 
+}
+
+.finder input {
+    width: 730px; 
+    height: 45px;
+    background-color: transparent; 
+    border: none;
+    color: #a6a0a0;
+    font-size: 16px;
+    outline: none;
+    padding-left: 10px; 
+}
+
+.finder input::placeholder {
+    color: #999;
+}
+
+.btn_find {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    opacity: 0.7;
+}
+
+.btn_find:hover {
+    transform: scale(1.1); 
+    opacity: 1;
+}
+
+
+
+@media (max-width: 768px) {
+    /* Основное меню */
+    .menu {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: visible; /* Изменено с hidden на visible */
+        white-space: nowrap;
+        padding: 10px 5px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        position: relative; /* Добавлено для корректного позиционирования */
+    }
+    
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .point {
+        display: inline-flex;
+        flex: 0 0 auto;
+        width: auto;
+        min-width: 80px;
+        margin: 0 5px;
+        padding: 8px 12px;
+        flex-direction: column;
+        gap: 5px;
+        position: relative; /* Для выпадающего меню */
+    }
+    
+    .point img {
+        width: 32px;
+        height: 32px;
+    }
+    #main_p img, #catalog_p img, #basket_p img, #you_p img{
+        width: 45px;
+        height: 45px;
+    }
+    
+    .point p {
+        font-size: 12px;
+    }
+    
+    #logo_p {
+        position: sticky;
+        left: 0;
+        background-color: #396a53;
+        z-index: 2;
+        margin-right: 10px;
+    }
+    
+    /* Кнопка пользователя */
+    #you_p {
+        /* position: sticky; */
+        right: 0;
+        background-color: #396a53;
+        z-index: 2;
+        margin-left: 10px;
+        width: 150px;
+    }
+    
+    /* Выпадающее меню */
+    .dropdown {
+        position: fixed;
+        top: 60px;
+        right: 5px;
+        display: none;
+        flex-direction: column;
+        background-color: #396a53;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+        width: 165px;
+        font-size: 10px;
+    }
+    
+    .dropdown.active {
+        display: flex;
+    }
+    
+    .dropdown-item {
+        padding: 12px 15px;
+        font-size: 11px;
+        text-align: left;
+        white-space: normal; 
+    }
+    
+    /* Индикаторы прокрутки */
+    .mobile-scroll-indicator {
+        display: none;
+        position: fixed;
+        top: 50px;
+        width: 30px;
+        height: 60px;
+        background: rgba(57, 106, 83, 0.7);
+        color: white;
+        font-size: 20px;
+        z-index: 3;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+    }
+    
+    .mobile-scroll-indicator.left {
+        left: 5px;
+    }
+    
+    .mobile-scroll-indicator.right {
+        right: 5px;
+    }
+    
+    @media (max-width: 768px) {
+        .mobile-scroll-indicator {
+            display: flex;
+        }
+    }
+    
+    /* Поиск */
+    .finder {
+        width: 95%;
+        margin: 10px auto;
+    }
+    
+    /* Логотип */
+    #logo_p p {
+        font-size: 15px;
+    }
+    
+    #logo_p {
+        margin-left: 15px;
+        margin-right: -10px;
+    }
+    
+    .logo {
+        width: 60px;
+        height: 70px;
+    }
+    
+    /* Блокировка прокрутки при открытом меню */
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    body.menu-open .menu {
+        overflow-x: hidden;
+    }
+}

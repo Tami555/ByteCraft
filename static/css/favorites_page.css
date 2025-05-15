@@ -1,0 +1,243 @@
+
+.main_title{
+    display: block;
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+
+.content {
+    background-color: #333333;
+    min-width: 90%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;      
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+.product_block{
+    width: 80%;
+    height: 120px;
+    font-family: "AKONY";
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 50px;
+}
+
+.product_block img{
+    width: 130px;
+    height: 130px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.titles_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.titles_block h1, .titles_block p{
+    font-family: 'AKONY';
+    font-size: 24px;
+}
+
+.main_title{
+    color: white;
+    font-size: 30px;
+    margin: 0;
+}
+
+.price{
+    font-size: 20px;
+    padding-left: 30px;
+}
+
+.product_block .put_in_basket{
+    background-color: #0E9956;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    color: white;
+    font-family: "AKONY";
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-wrap: nowrap;
+    padding: 0px 15px;
+}
+
+.put_in_basket:hover {
+    transform: scale(1.1);
+    box-shadow: inset 0 0 13px #B7FFAF;
+}
+
+.product_block .like{
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.empty{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: #E07373;
+    font-family: 'AKONY';
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+}
+.empty img{
+    width: 150px;
+    height: 140px;
+}
+
+.create_order:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #8e4a4a;
+}
+.already_in_basket{
+    color: #0E9956;
+}
+
+.product_block .block_sorry_no{
+    background-color: transparent;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.block_sorry_no p{
+    font-family: "AKONY";
+    font-size: 15px;
+    color: #C0392B;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+.block_sorry_no img{
+    width: 50px;
+    height: 50px;
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .content {
+        padding: 10px;
+        gap: 15px;
+    }
+    
+    .product_block {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        align-items: center;
+    }
+    
+    .product_block img {
+        width: 100px;
+        height: 100px;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    
+    .titles_block {
+        align-items: center;
+        text-align: center;
+        gap: 5px;
+    }
+    
+    .main_title {
+        font-size: 22px;
+        padding-left: 0;
+        padding-bottom: 5px;
+    }
+    
+    .price {
+        font-size: 18px;
+        padding-left: 0;
+    }
+    
+    .product_block .put_in_basket {
+        width: 160px;
+        height: 40px;
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    
+    .product_block .like {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .empty h1 {
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    .empty img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .block_sorry_no {
+        margin: 10px 0;
+    }
+    
+    .block_sorry_no p {
+        font-size: 14px;
+    }
+    
+    .block_sorry_no img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main_title {
+        font-size: 20px;
+    }
+    
+    .price {
+        font-size: 16px;
+    }
+    
+    .product_block .put_in_basket {
+        width: 140px;
+        height: 36px;
+        font-size: 14px;
+    }
+    
+    .empty h1 {
+        font-size: 16px;
+    }
+    .put_in_basket{
+        min-width: 200px;
+    }
+
+    
+.product_block .like{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    position: relative;
+}
+}

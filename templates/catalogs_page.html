@@ -1,0 +1,33 @@
+{% extends "menu_basic.html" %}
+{% block dop_style %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/catalogs_page.css')}}">
+<style>
+    .category {
+        transition: transform 0.6s ease-in-out, box-shadow 0.2s ease-in-out; /* Плавная анимация */
+    }
+
+    .category:hover {
+        transform: scale(1.05);
+        z-index: 1000;
+    }
+    {% for c in categories %}
+
+    .category-{{ c.Id }}:hover {
+        box-shadow: 5px 14px 25px {{ c.Background }};
+    }
+    {% endfor %}
+</style>
+{% endblock %}
+
+{% block content %}
+    {% for c in categories %}
+    <a href="/shop/catalog/get_products/categore/{{c.Id}}" class="category category-{{ c.Id }}">
+        <div>
+           <h1>{{c.Title}}</h1>
+           <div class="obolocha">
+                <img src="{{ c.Image }}">
+           </div>
+        </div>
+    </a>
+    {% endfor %}
+{% endblock %}

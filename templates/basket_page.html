@@ -1,0 +1,64 @@
+{% extends "menu_basic.html" %}
+{% block dop_style %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/basket_page.css')}}">
+
+<style>
+    {% for p in product%}
+    .product-{{ p.Id }} {
+        background: linear-gradient(75deg, {{ p.Background}}, #2C2B2D);
+    }
+    .price-{{ p.Id }}{
+        color: {{ p.Color}};
+    }
+    {% endfor %}
+</style>
+{% endblock %}
+
+{% set ns = namespace(total_price=0) %}
+
+{% block content %}
+    {%if product|length > 0%}
+    {% for p in product%}
+    <div class="product_block product-{{ p.Id }}" data-price="{{p.Cost}}">
+        <img src={{p.Image}}>
+        <div class="titles_block">
+            <h1 class="main_title">{{p.Title}}</h1>
+            <p class="price price-{{ p.Id }}">{{p.Cost}} руб</p>
+        </div>
+
+        <div class="counter">
+
+            {% if p.QuantityStock > 0 %}
+            <div class="block_plus_minus">
+                <div class="plus plus-{{p.Id}}" data-product-id="{{p.Id}}" data-product-quantity="{{p.QuantityStock}}">+</div>
+                <div class="minus" data-product-id="{{p.Id}}">-</div>
+            </div>
+            <div class="value_counter value-{{p.Id}}">{{p.Quantity}}</div>
+
+            {% set ns.total_price = ns.total_price + (p.Cost * p.Quantity) %}
+            {% else %}
+            <div class="block_sorry_no">
+                <img src="https://cdn1.iconfinder.com/data/icons/smileycons/128/outlined_unhappy_smiley_sad_negative-512.png">
+                <p>НЕТ В</p>
+                <p>НАЛИЧИИ</p>
+            </div>
+            {% endif %}
+            <div class="delete_product" data-product-id="{{p.Id}}"><img src="https://cdn4.iconfinder.com/data/icons/linecon/512/delete-256.png"></div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="final">
+        <h1 class="final_price">ИТОГ: {{ ns.total_price }} руб</h1>
+        <a href="/place_order"><button class="create_order" {% if ns.total_price == 0 %}disabled{% endif %}>ОФОРМИТЬ</button></a>
+    </div>
+    {% else %}
+        <div class="basket_empty">
+            <h1>ВАША КОРЗИНА ПУСТА !!</h1>
+            <h1>Скорее купите что-нибудь</h1>
+            <img src="{{url_for('static', filename='img/empy_basket.png')}}">
+        </div>
+    {% endif %}
+
+<script src="{{url_for('static', filename='js/basket.js')}}"></script>
+{% endblock %}

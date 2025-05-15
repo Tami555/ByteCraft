@@ -1,0 +1,54 @@
+{% extends "menu_basic.html" %}
+{% block dop_style %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/favorites_page.css')}}">
+
+<style>
+    {% for p in products%}
+    .product-{{ p.Id }} {
+        background: linear-gradient(75deg, {{ p.Background}}, #2C2B2D);
+    }
+    .price-{{ p.Id }}{
+        color: {{ p.Color}};
+    }
+    {% endfor %}
+</style>
+{% endblock %}
+
+{% block content %}
+    {%if products|length > 0%}
+
+    {% for p in products%}
+        <div class="product_block product-{{ p.Id }}">
+            <img src={{p.Image}}>
+            <div class="titles_block">
+                <h1 class="main_title">{{p.Title}}</h1>
+                <p class="price price-{{ p.Id }}">{{p.Cost}} руб</p>
+            </div>
+
+            {%if p.QuantityStock == 0%}
+            <div class="block_sorry_no">
+                <img src="https://cdn1.iconfinder.com/data/icons/smileycons/128/outlined_unhappy_smiley_sad_negative-512.png">
+                <p>НЕТ В НАЛИЧИИ</p>
+            </div>
+            {%else%}
+                {%if p.in_basket %}
+                    <button class="put_in_basket" data-product-id="{{ p.Id }}">В корзину</button>
+                {%else%}
+                    <div class="already_in_basket">Добавлен</div>
+                {%endif%}  
+            {%endif%}
+            
+            <img class="like" src="{{url_for('static', filename='img/like.png')}}" data-product-id="{{ p.Id }}">
+    </div>
+    {%endfor%}
+    
+    {% else %}
+        <div class="empty">
+            <h1>Здесь пусто!</h1>
+            <h1>Вам ничего не понравилось ?</h1>
+            <img src="{{url_for('static', filename='img/broken_heart.png')}}">
+        </div>
+    {% endif %}
+
+<script src="{{url_for('static', filename='js/favorites.js')}}"></script>
+{% endblock %}

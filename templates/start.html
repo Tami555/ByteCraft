@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteCraft: Главная страница</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/start.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'AKONY';
+            src: url("{{url_for('static', filename='fonts/AKONY.woff2')}}");
+        }
+        body{
+            background-image: url("{{url_for('static', filename='img/code_life.gif')}}");
+        }
+    </style>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="{{url_for('static', filename='img/icon-192x192.png')}}">
+</head>
+<body style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;">
+    <div class="block_titles">
+        <img src="{{url_for('static', filename='img/brain_logo2.PNG')}}" id="logo">
+        <div class="titles">
+            <h1 class="main_zagol">ByteCraft</h1>
+            <h2 class="description">Магазин Компьютерной техники</h2>
+        </div>
+    </div>
+
+    <a href="/registration"><button class="btn_start btn_register">Регистрация</button></a>
+    <a href="/login"><button class="btn_start btn_login">Войти</button></a>
+</body>
+</html>

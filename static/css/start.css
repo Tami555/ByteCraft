@@ -1,0 +1,188 @@
+@font-face {
+    font-family: 'AKONY';
+    src: url("{{url_for('static', filename='fonts/AKONY.woff2')}}");
+  }
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("{{url_for('static', filename='img/main_fon_0_1.JPEG')}}");
+    background-size: 100% 100%;
+    width: 100%;
+    height: 800px;
+    background-repeat: no-repeat;
+    overflow-y: hidden;
+}
+.block_titles{
+    display: flex;
+    gap: 20px;
+    color: white;
+}
+.titles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#logo{
+    width: 140px;
+    height: 130px;
+    left: 285px;
+    position: absolute;
+}
+.main_zagol {
+    /* font-family: 'AKONY'; */
+    font-family: "Orbitron", sans-serif;
+    font-weight: 800;
+    font-size: 105px;
+    -webkit-text-stroke: 2.5px black;
+
+}
+
+.description{
+    font-family: 'AKONY';
+    font-size: 20px;
+    -webkit-text-stroke: 1.5px black;
+    margin-bottom: 20px;
+}
+
+
+.btn_start {
+    background-color: rgba(145, 143, 143, 0.67);
+    color: #fff;
+    font-family: 'AKONY', sans-serif;
+    font-size: 18px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px;
+    position: relative;
+}
+
+.btn_start:hover {
+    background-color: rgba(145, 143, 143, 0.9);
+    transform: translateY(-5px);
+    box-shadow: 0 7px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для кнопки "Регистрация" */
+.btn_register {
+    margin-top: 60px;
+    height: 70px;
+    width: 400px;
+}
+
+.btn_register:hover {
+    background-color: rgba(60, 177, 17, 0.578);
+}
+
+/* Стили для кнопки "Войти" */
+.btn_login {
+    height: 65px;
+    width: 250px;
+}
+
+.btn_login:hover {
+    background-color: rgba(30, 91, 9, 0.578);
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    body {
+        background-image: url("{{url_for('static', filename='img/code_life.gif')}}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        padding: 20px;
+        justify-content: flex-start;
+        overflow-y: auto;
+    }
+
+    .block_titles {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    #logo {
+        position: static;
+        width: 100px;
+        height: 95px;
+        margin-bottom: 15px;
+    }
+
+    .main_zagol {
+        font-size: 3rem;
+        -webkit-text-stroke: 1.5px black;
+        line-height: 1;
+        margin-bottom: 10px;
+    }
+
+    .description {
+        font-size: 1rem;
+        -webkit-text-stroke: 0.8px black;
+        margin-bottom: 30px;
+    }
+
+    .btn_start {
+        width: 100% !important;
+        max-width: 300px;
+        margin: 10px auto !important;
+        font-size: 12px;
+        padding: 15px;
+    }
+
+    .btn_register {
+        margin-top: 20px !important;
+        height: 60px;
+        font-size: 12px;
+    }
+
+    .btn_login {
+        height: 55px;
+        font-size: 12px;
+        width: 300px;
+    }
+
+    /* Уменьшаем анимацию при наведении для мобильных */
+    .btn_start:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .main_zagol {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    #logo {
+        width: 80px;
+        height: 75px;
+    }
+
+    .btn_start {
+        width: 100% !important;
+        font-size: 11px;
+    }
+}

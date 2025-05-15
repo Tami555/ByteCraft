@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/reviews_products.css')}}">
+    <title>ByteCraft - computer store</title>
+    <style>
+        @font-face {
+            font-family: 'AKONY';
+            src: url("{{url_for('static', filename='fonts/AKONY.woff2')}}");
+        }
+        @font-face {
+            font-family: 'Angry';
+            src: url("{{url_for('static', filename='fonts/Angry.woff2')}}");
+        }
+    </style>
+</head>
+<body>
+    {% if reviews|length > 0 %}
+    <a href="/shop/main_page" style="position: absolute; left: 10px; top: 50px;"><img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/arrow-left-circle-512.png" style="width: 50px; height: 50px;"></a>
+    <h1>ОТЗЫВЫ: {{product.Title}}</h1>
+
+    <div class="mark_block">
+        <img src="{{url_for('static', filename='img/great_star.png')}}">
+        <h2>{{main_mark}}</h2>
+    </div>
+
+        <div class="all_reviews_block">
+            {% for r in reviews%}
+                <div class="review_block">
+                    <div class="avtor_review_block">
+                        {% set ava = 'img/avatars/' + r.user.Image_Avatar %}
+                        <img class="ava" src="{{url_for('static', filename=ava)}}">
+                        <h2 class="user_name">{{r.user.FirstName}} {{r.user.LastName}}</h2>
+                        <!-- Звезды -->
+                         <div class="stars_block">
+                            {%set bad_starts = 5 - r.Mark%}
+                            {% for _ in range(r.Mark)%}
+                                <img class="start_img" src="{{url_for('static', filename='img/great_star.png')}}">
+                            {%endfor%}
+
+                            {% for _ in range(bad_starts)%}
+                                <img class="start_img" src="{{url_for('static', filename='img/empty_star.png')}}">
+                            {%endfor%}
+                         </div>
+
+                         <p class="data">{{r.Data}}</p>
+                    </div>
+                    <h3 class="comment_block">
+                        {{r.Description}}
+                    </h3>
+                </div>
+            {% endfor %}
+        </div>
+
+        {%else%}
+        <div class="empty">
+            <h1>На этот товар пока нет отзывов</h1>
+            <h1>Станьте первым !</h1>
+            <img src="https://cdn4.iconfinder.com/data/icons/feedback-and-rating/100/feedback-04-256.png">
+        </div>
+        {% endif %}
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "menu_basic.html" %}
+{% block dop_style %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/user_account.css')}}">
+{% endblock %}
+
+{% block content %}
+{% set ava = 'img/avatars/' + user.Image_Avatar %}
+    <div class="header_infa_user">
+        <img class="avatar" src="{{url_for('static', filename=ava)}}">
+        <h2 class="name">{{user.FirstName}} {{user.LastName}} {{user.Patronymic}}</h2>
+        <a href="/user_account/change"><div class="btn_redactor_user">Редактировать</div></a>
+    </div>
+
+
+    <div class="one_value">
+        <h3>адрес электронной почты:</h3>
+        <div>{{user.Email}}</div>
+    </div>
+
+    <div class="one_value">
+        <h3>Номер телефона:</h3>
+        <div>{{user.PhoneNumber}}</div>
+    </div>
+
+    <div class="one_value">
+        <h3>Количество покупок:</h3>
+        <div>{{purchases}}</div>
+    </div>
+
+    <a href="/logout"><div class="btn_logout">Выйти из аккаунта</div></a>
+
+{% endblock %}  

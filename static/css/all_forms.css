@@ -1,0 +1,269 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+    gap: 50px;
+
+    /* Нельзя копировать */
+    -ms-user-select: none; 
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	user-select: none; 
+    
+}
+h1{
+    /* margin: 10px; */
+    padding-top: 70px;
+    display: inline-block;
+    font-family: 'AKONY';
+    font-size: 35px;
+    color: #B7FFAF;
+}
+
+.foms_block{
+    padding: 20px;
+    border-radius: 20px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #394c43;
+    /* border: 4px solid #52655A; */
+    /* transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; */
+}
+
+p {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+input{
+    align-self: center;
+    width: 350px;
+    height: 40px;
+    background-color: #D9D9D9;
+}
+
+input.form-control:focus {
+    outline: none;
+    background-color: #D0E8D6;
+    border: 2px solid rgb(6, 185, 6);
+}
+label{
+    align-self: center;
+    color: white;
+    font-family: 'Angry';
+}
+
+a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+.block_btns{
+    display: flex;
+    gap: 30px;
+    margin: 30px;
+}
+
+.btn_ok{
+    font-size: 9px;
+    border: none;
+}
+.btn_ok,
+.btn_no {
+    color: white;
+    font-family: 'AKONY', sans-serif;
+    width: 250px;
+    height: 45px; /* Немного увеличим высоту */
+    border-radius: 10px;
+    cursor: pointer;
+    /* -webkit-text-stroke: 0.2px black;  Убираем обводку текста */
+    border: 2px solid transparent; /* Прозрачная рамка по умолчанию */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Мягкая тень */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold; /* Сделаем текст более жирным */
+}
+
+.btn_ok {
+    background-color: #0c7d46;
+    -webkit-text-stroke: 0.2px black;
+}
+
+.btn_no {
+    background-color: #032816;
+}
+
+.btn_ok:hover {
+    transform: scale(1.05); /* Небольшое увеличение масштаба */
+    border-color: #B7FFAF; /* Зеленая обводка для .btn_ok */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4); /* Более выраженная тень */
+}
+
+.btn_no:hover {
+    transform: scale(1.05); /* Небольшое увеличение масштаба */
+    border-color: #52655A; /* Темно-серая обводка для .btn_no */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4); /* Более выраженная тень */
+}
+
+.errors{
+    color: rgb(205, 56, 56);
+    font-size: 9px;
+    font-family: 'AKONY';
+    text-align: center;
+    -webkit-text-stroke: 0.2px rgb(62, 5, 5);
+}
+
+/* Скрываем стандартный чекбокс */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none; /* Для совместимости с Safari */
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Плавный переход для всех свойств */
+    position: relative; /* Чтобы позиционировать псевдоэлемент */
+    margin-top: 15px;
+    margin-bottom: -10px;
+    margin-left: 10px;
+  }
+  
+  /* Стили для чекбокса при наведении */
+  input[type="checkbox"]:hover {
+    border-color: #999;
+  }
+  
+  /* Стили для чекбокса в состоянии focus */
+  input[type="checkbox"]:focus {
+    border-color: #555;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Стили для выбранного чекбокса */
+  input[type="checkbox"]:checked {
+    background-color: #0E9956;
+    border-color: #0E9956;
+  }
+  
+  /* Добавляем галочку с помощью псевдоэлемента */
+  input[type="checkbox"]:checked::before {
+    content: url('https://cdn4.iconfinder.com/data/icons/doodle-3/156/ok-48.png'); 
+    font-family: "Font Awesome 5 Free"; /* Указываем семейство шрифтов Font Awesome */
+    font-weight: 900; /* Указываем жирность шрифта */
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }  
+  
+
+  /* Мобильная версия */
+@media (max-width: 768px) {
+    body {
+        gap: 30px;
+        padding: 20px;
+        justify-content: flex-start;
+    }
+    
+    h1 {
+        padding-top: 30px;
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .foms_block {
+        width: 90%;
+        max-width: 100%;
+        padding: 15px;
+        border-radius: 15px;
+    }
+    
+    input {
+        width: 90%;
+        max-width: 350px;
+        height: 45px;
+    }
+    
+    label {
+        font-size: 14px;
+    }
+    
+    .block_btns {
+        flex-direction: column;
+        gap: 15px;
+        margin: 20px 0;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .btn_ok,
+    .btn_no {
+        width: 90%;
+        max-width: 300px;
+        height: 50px;
+        font-size: 16px;
+    }
+    
+    .errors {
+        font-size: 12px;
+    }
+    
+    input[type="checkbox"] {
+        width: 25px;
+        height: 25px;
+        margin-top: 10px;
+    }
+    
+    /* Уменьшаем hover-эффекты для мобильных */
+    .btn_ok:hover,
+    .btn_no:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 15px;
+        padding-top: 20px;
+    }
+    
+    .foms_block {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    input {
+        height: 40px;
+    }
+    .btn_ok,
+    .btn_no {
+        height: 45px;
+        width: 250px;
+        font-size: 9px;
+    }
+    
+    input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+    }
+}

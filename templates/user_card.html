@@ -1,0 +1,52 @@
+{% extends "menu_basic.html" %}
+{% block dop_style %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/user_card.css')}}">
+{% endblock %}
+
+{% set number = card.CardNumber|string()%}
+
+{% block content %}
+
+    {% if card.CardNumber != 0 %}
+        <div class="card_block">
+            <a href="/shop/user_card/add_update">
+                <div class="card">
+                    <div class="simple-line"></div>
+                    <p>{{number[:4]}} **** **** ****</p>
+                    <img src="https://cdn0.iconfinder.com/data/icons/flat-design-business-set-3/24/payment-method-visa-256.png">
+                </div>
+            </a>
+
+            <div class="money_block">
+                <div class="balance_block">
+                    <h2>Баланс</h2>
+                    <p class="balanse">{{card.Balance}} рублей</p>
+                </div>
+                <button id="put_money" class="put_money">Пополнить Баланс</button>
+            </div>
+        </div>
+
+        <div class="replenish_balsnse">
+            <h1>введите сумму пополнения</h1>
+            <div class="input_money">
+                <input type="text" name="balance" id="balance"/>
+                <p>рублей</p>
+            </div>
+            <p class="error" id="err_balance"></p>
+            <button class="btn_replenish_balsnse">Пополнить</button>
+        </div>
+
+
+    {% else %}
+    <div class="no_card">
+        <h1>Добавить карту</h1>
+        <a href="/shop/user_card/add_update">
+            <div class="btn_add_card">
+                <img src="{{url_for('static', filename='img/card.png')}}">
+                <p>+</p>
+            </div>
+        </a>
+    </div>
+    {% endif %}
+    <script src="{{url_for('static', filename='js/balance.js')}}"></script>
+{% endblock %}

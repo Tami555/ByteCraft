@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/change_user_account.css')}}">
+    <title>ByteCraft - computer store</title>
+
+    <style>
+        @font-face {
+            font-family: 'AKONY';
+            src: url("{{url_for('static', filename='fonts/AKONY.woff2')}}");
+        }
+        @font-face {
+            font-family: 'Angry';
+            src: url("{{url_for('static', filename='fonts/Angry.woff2')}}");
+        }
+    </style>
+</head>
+<body>
+    {% set ava = 'img/avatars/' + user.Image_Avatar %}
+    <div class="context">
+        <img class="avatar" id="avatar" src="{{url_for('static', filename=ava)}}" value={{user.Image_Avatar}}>
+
+        <div class="block_input">
+            <label>Фамилия</label>
+            <input type="text" id="lastname" value="{{user.LastName}}">
+        </div>
+    
+        <div class="block_input">
+            <label>Имя</label>
+            <input type="text" id="firstname" value="{{user.FirstName}}">
+        </div>
+    
+        <div class="block_input">
+            <label>Отчество</label>
+            <input type="text" id="patronymic" value="{{user.Patronymic}}">
+        </div>
+
+        <div class="block_input">
+            <label>Email</label>
+            <input type="text" id="email" value="{{user.Email}}">
+        </div>
+
+        <div class="block_input">
+            <label>Телефон</label>
+            <input type="text" id="phone" value="{{user.PhoneNumber}}">
+        </div>
+        
+        <p class="error"></p>
+        <div class="btn_block">
+            <a href="/user_account"><button class="btn_change btn_save_bad">Отмена</button></a>
+            <button class="btn_change btn_save_change">Сохранить</button>
+        </div>
+    </div>
+
+    <div class="block_new_avatars">
+        {% for ava in avatars_img%}
+            {% set a = 'img/avatars/' + ava %}
+            <div class="item-ava"><img src="{{url_for('static', filename=a)}}"></div>
+        {%endfor%}
+    </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/change_user_account.js')}}"></script>
+</body>
+</html>

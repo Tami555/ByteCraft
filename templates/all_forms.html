@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#394c43">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/all_forms.css')}}">
+    <title>{{title}}</title>
+
+    <style>
+        @font-face {
+            font-family: 'AKONY';
+            src: url("{{url_for('static', filename='fonts/AKONY.woff2')}}");
+        }
+        @font-face {
+            font-family: 'Angry';
+            src: url("{{url_for('static', filename='fonts/Angry.woff2')}}");
+        }
+        input[type="checkbox"]:checked::before {
+            content: url("{{url_for('static', filename='img/okay.png')}}");
+        }
+    </style>
+</head>
+
+{% macro create_pole(obj)%}
+    <p>
+        {{obj.label}}
+        {% if obj.name != 'remember_me'%}<br>{% endif %}
+        {{obj(class="form-control")}}
+        {% for err in obj.errors%}
+        <div class="errors" role="alert">
+            {{err}}
+        </div>
+        {% endfor %}
+    </p>
+    <br>
+{% endmacro%}
+
+<body>
+    <h1>{{title}}</h1>
+    <div class="foms_block">
+        <form method="post" novalidate>
+            {{ hidden }}
+            {% for pole in lst_poles%}
+                {{create_pole(pole)}}
+            {% endfor %}
+            <p class="errors">{{message}}</p>
+            <div class="block_btns">
+                <button type="submit" class="btn_ok"> {{title}}</button>
+                <a href="/" class="btn_no">Отмена</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

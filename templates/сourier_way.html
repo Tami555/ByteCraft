@@ -1,0 +1,25 @@
+{% extends "basic_way.html" %}
+
+{% block dop_style %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/сourier_way.css')}}">
+{% endblock %}
+
+
+{% block wayblock %}
+
+<div class="find_adress">
+    <input type="text" id="our_adress">
+
+    <div class="btn_found">
+        <img src="https://cdn-icons-png.freepik.com/512/854/854929.png?ga=GA1.1.241826162.1740839010">
+    </div>
+</div>
+
+<img src="{{img_map}}" class="map_img" alt="Здесь должна быть карта. Извините !">
+
+<p class="error"></p>
+
+<button class="btn_check_address" id="сourier_adress_check"> Выбрать </button>
+
+<script src="{{url_for('static', filename='js/сourier_way.js')}}"></script>
+{% endblock %}
